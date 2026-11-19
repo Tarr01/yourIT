@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>your'IT — Discover Your Path in IT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <canvas id="bgwave" aria-hidden="true"></canvas>
+    <header class="topbar">
+      <div class="wrap navinner">
+        <a class="brand" href="#" onclick="go('home');return false"><span class="brandmark">⌘</span>your'IT</a>
+        <nav class="nav" id="nav">
+          <button data-view="home" class="active" onclick="go('home')">Home</button>
+          <button data-view="quiz" onclick="go('quiz')">Quiz</button>
+          <button data-view="match" onclick="go('match')">Match</button>
+          <button data-view="skill" onclick="go('skill')">Skill Roadmap</button>
+        </nav>
+        <div class="navright">
+          <!-- <span class="pill">CAREER DISCOVERY 2.0</span> -->
+          <button class="mobilemenu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="view active" id="home">
+        <div class="wrap hero">
+          <div>
+            <div class="eyebrow">✦ INTERACTIVE CAREER ASSESSMENT</div>
+            <h1>Discover Your<br><span class="gradient">Path in IT.</span></h1>
+            <p>ค้นหาว่าความชอบ บุคลิก และทักษะของคุณสอดคล้องกับสายอาชีพด้านเทคโนโลยีแบบไหน ผ่านแบบประเมินจำลองสถานการณ์ พร้อมสร้าง Roadmap การเรียนรู้เฉพาะตัว</p>
+            <div class="actions">
+              <button class="btn primary" onclick="startQuiz()">Start Assessment <span>↗</span></button>
+              <button class="btn secondary" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">Explore the process ↓</button>
+            </div>
+            <div class="meta">
+              <span>20 คำถาม ใช้เวลา 5–8 นาที</span>
+              <span>ฟรี ไม่ต้องลงทะเบียน</span>
+              <span>เหมาะกับทุกระดับ</span>
+            </div>
+          </div>
+          <div style="position:relative">
+            <div class="terminal">
+              <div class="termhead">
+                <div class="dots"><i></i><i></i><i></i></div>
+                <!-- <span>YOUR_IT_TERMINAL.EXE</span> -->
+                <span style="color:var(--green)">● ONLINE</span>
+              </div>
+              <div class="screen">
+                <div class="screenlabel">
+                  <span>CAREER MATCH ENGINE</span>
+                  <span id="pvLabel">SAMPLE PREVIEW</span>
+                </div>
+                <div style="margin-top:35px;color:var(--muted);font-size:11px" id="pvSub">ตัวอย่างการแสดงผล (ไม่ใช่ผลของคุณ)</div>
+                <div class="matchbox">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div>
+                      <div style="font-size:10px;color:var(--muted)">TOP COMPATIBILITY</div>
+                      <b style="font-size:17px" id="pvName">-</b>
+                    </div>
+                    <div class="big" id="pvPct">0%</div>
+                  </div>
+                  <div class="bar"><span id="pvBar" style="width:0"></span></div>
+                </div>
+                <div class="minigrid" id="pvChips"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="wrap statsgrid">
+            <div class="stat">
+              <strong>20</strong>
+              <div>Assessment Questions</div>
+              <small>ค้นหาความสนใจและสไตล์การคิด</small>
+            </div>
+            <div class="stat">
+              <strong>06</strong>
+              <div>IT Career Domains</div>
+              <small>สำรวจสายงานเทคโนโลยีหลัก</small>
+            </div>
+            <div class="stat">
+              <strong>01</strong>
+              <div>Personal Roadmap</div>
+              <small>เส้นทางเรียนรู้ที่ปรับตามผลลัพธ์</small>
+            </div>
+            <div class="stat">
+              <strong>∞</strong>
+              <div>Possibilities</div>
+              <small>เริ่มต้นค้นพบความเป็นไปได้</small>
+            </div>
+          </div>
+        </div>
+        <section class="section" id="how">
+          <div class="wrap">
+            <div class="sectionhead">
+              <div class="eyebrow">HOW IT WORKS</div>
+              <h2>3 ขั้นตอน ค้นพบตัวตนในโลกเทคโนโลยี</h2>
+              <p>ไม่จำเป็นต้องมีพื้นฐานมาก่อน เริ่มจากความสนใจ แล้วค่อย ๆ วางแผนพัฒนาทักษะของตัวเอง</p>
+            </div>
+            <div class="steps">
+              <div class="card click" onclick="startQuiz()">
+                <div class="stepnum">01</div>
+                <div class="iconbox">▤</div>
+                <h3>Take the Quiz</h3>
+                <p>ตอบคำถามเกี่ยวกับความสนใจ วิธีคิด การทำงานเป็นทีม และสถานการณ์แก้ปัญหา</p>
+              </div>
+              <div class="card click" onclick="go('match')">
+                <div class="stepnum">02</div>
+                <div class="iconbox">◉</div>
+                <h3>Get Your Match</h3>
+                <p>ระบบประมวลผลคำตอบและจัดอันดับสายอาชีพที่มีแนวโน้มเข้ากับคุณมากที่สุด</p>
+              </div>
+              <div class="card click" onclick="go('skill')">
+                <div class="stepnum">03</div>
+                <div class="iconbox">⌁</div>
+                <h3>Follow Roadmap</h3>
+                <p>รับแนวทางทักษะที่ควรเรียนรู้ แบ่งเป็นขั้นตอน พร้อมเช็กลิสต์ติดตามความคืบหน้า</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section" style="background:#071020a8">
+          <div class="wrap">
+            <div class="sectionhead">
+              <div class="eyebrow">CAREER DOMAINS</div>
+              <h2>สายงานยอดนิยมที่รอให้คุณค้นพบ</h2>
+              <p>โลก IT มีเส้นทางมากกว่าการเขียนโค้ด ลองสำรวจบทบาทที่หลากหลาย</p>
+            </div>
+            <div class="careergrid" id="careerCards"></div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="wrap split">
+            <div>
+              <div class="eyebrow">WHY YOUR'IT?</div>
+              <h2 style="font:700 34px 'Space Grotesk';margin:13px 0">Your interest.<br><span class="gradient">Your direction.</span></h2>
+              <p class="muted" style="font-size:13px;line-height:1.9">your'IT ช่วยให้คุณมองเห็นความเป็นไปได้ในสายเทคโนโลยี และเปลี่ยนความสนใจให้กลายเป็นแผนการเรียนรู้ที่ลงมือทำได้จริง</p>
+              <div class="featurelist">
+                <div class="feature">
+                  <div class="iconbox">◎</div>
+                  <div>
+                    <b>Multi-dimensional Assessment</b>
+                    <p>พิจารณาความสนใจ สไตล์การคิด และแนวทางการทำงานหลายมิติ</p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <div class="iconbox">⌂</div>
+                  <div>
+                    <b>Career & Academic Direction</b>
+                    <p>เชื่อมโยงสายงานกับแนวทางการศึกษาที่เกี่ยวข้อง</p>
+                  </div>
+                </div>
+                <div class="feature">
+                  <div class="iconbox">↗</div>
+                  <div>
+                    <b>Actionable Skill Roadmap</b>
+                    <p>แบ่งเป้าหมายออกเป็นขั้นตอนที่ติดตามและทำได้จริง</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card" style="padding:28px">
+              <div class="eyebrow">TRANSPARENT SCORING</div>
+              <h3 style="font:700 23px 'Space Grotesk';margin:14px 0 8px">ตรวจสอบผลได้ทุกขั้นตอน</h3>
+              <p style="color:var(--muted);font-size:12px;line-height:1.8">คะแนนคำนวณจากคำตอบจริงของคุณ ไม่ใช่ตัวเลขตั้งไว้ล่วงหน้า และเปิดดูที่มาของทุกเปอร์เซ็นต์ได้ในหน้าผลลัพธ์</p>
+              <div class="mini"><span>ตอบตรงกับสายหลัก</span><span>+2 คะแนน</span></div>
+              <div class="mini"><span>ตอบเกี่ยวข้องกับสายรอง</span><span>+1 คะแนน</span></div>
+              <div class="mini"><span>Match %</span><span>ได้ ÷ เต็ม × 100</span></div>
+              <button class="btn secondary" style="width:100%;margin-top:18px" onclick="go('skill')">เปิดคลังเส้นทางเรียนรู้ทั้ง 6 สาย ↗</button>
+            </div>
+          </div>
+        </section>
+        <div class="wrap cta">
+          <div class="eyebrow">YOUR JOURNEY STARTS HERE</div>
+          <h2>พร้อมค้นพบสายงาน IT ที่ใช่หรือยัง?</h2>
+          <p>เริ่มทำแบบประเมิน แล้วค้นหาเส้นทางที่เหมาะกับคุณ</p>
+          <div class="actions" id="ctaBtns" style="justify-content:center;margin-top:0"></div>
+        </div>
+      </section>
+      <section class="view" id="quiz">
+        <div class="wrap">
+          <div class="pagehead">
+            <div class="eyebrow">✦ DISCOVERY ASSESSMENT</div>
+            <h1>ค้นหาตัวตนในโลก <span class="gradient">IT.</span></h1>
+            <p>ไม่มีคำตอบถูกหรือผิด เลือกสิ่งที่ใกล้เคียงกับตัวคุณมากที่สุด</p>
+          </div>
+          <div class="quizlayout">
+            <aside class="panel progressbox"><div class="eyebrow">YOUR PROGRESS</div><div style="display:flex;justify-content:space-between;margin-top:13px"><b id="progressLabel">คำถามที่ 1 จาก 10</b><b id="progressPct" style="color:var(--cyan)">10%</b></div><div class="progressline"><span id="progressFill" style="width:10%"></span></div><div class="qsteps" id="qsteps"></div><div style="margin-top:22px;padding:14px;background:#0b1729;border-radius:12px"><div style="font-size:11px;color:var(--cyan);font-weight:800">TIP</div><p style="font-size:11px;line-height:1.7;color:var(--muted);margin-bottom:0">ตอบตามความรู้สึกจริง ๆ ไม่ต้องเลือกสิ่งที่คิดว่าดูเก่งที่สุด</p></div></aside>
+            <div class="panel">
+              <div id="qbody">
+                <div class="eyebrow" id="qCategory">DISCOVERY PATHWAY</div>
+                <div class="question" id="questionText"></div>
+                <p class="muted" style="font-size:12px" id="questionSub">เลือกคำตอบที่ตรงกับคุณมากที่สุด</p>
+                <div class="answers" id="answers"></div>
+              </div>
+              <div class="quizfoot">
+                <button class="btn secondary" onclick="prevQuestion()" id="prevBtn">← ย้อนกลับ</button>
+                <span class="muted" style="font-size:10px">YOUR'IT • CAREER QUIZ</span>
+                <button class="btn primary" onclick="nextQuestion()" id="nextBtn" disabled="">ถัดไป →</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="view" id="match">
+        <div class="wrap">
+          <div class="pagehead">
+            <div class="eyebrow">✦ ANALYSIS COMPLETE</div>
+            <h1>Your Career <span class="gradient">Matches.</span></h1>
+            <p>ผลการประเมินจำลองจากความสนใจและแนวทางการทำงานที่คุณเลือก</p>
+          </div>
+          <div class="panel" id="matchEmpty" style="display:none;text-align:center;padding:42px;margin-bottom:70px">
+            <h3 style="font:700 22px 'Space Grotesk'">ยังไม่มีผลการประเมิน</h3>
+            <p class="muted" style="font-size:12px">ตอบคำถามให้ครบทั้ง 20 ข้อ ระบบจะคำนวณผลจากคำตอบของคุณจริง ๆ</p>
+            <button class="btn primary" onclick="go('quiz')">ไปทำแบบประเมิน ↗</button>
+          </div>
+          <div class="resultgrid" id="matchBody">
+            <div class="panel">
+              <div class="scorehero">
+                <div>
+                  <div class="eyebrow">TOP CAREER MATCH</div>
+                  <h2 id="topCareer" style="font:700 27px 'Space Grotesk';margin:10px 0 5px">Frontend Developer</h2>
+                  <p id="topDesc" class="muted" style="font-size:12px;line-height:1.8;margin:0">...</p>
+                </div>
+                <div class="scorecircle" id="topScore">94%</div>
+              </div>
+              <div style="margin-top:25px">
+                <div class="eyebrow">CAREER COMPATIBILITY</div>
+                <div class="resultlist" id="resultList"></div>
+              </div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px">
+                <button class="btn primary" onclick="go('skill')">ดู Skill Roadmap ↗</button>
+                <button class="btn secondary" onclick="startQuiz()">ทำแบบทดสอบใหม่</button>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="eyebrow">YOUR STRENGTH PROFILE</div>
+              <h3 style="margin:10px 0 5px">จุดเด่นของคุณ</h3>
+              <p class="muted" style="font-size:11px;line-height:1.7">ภาพรวมจากคำตอบที่เลือก</p>
+              <div id="traits"></div>
+              <div style="border-top:1px solid var(--line);margin-top:23px;padding-top:18px">
+                <div class="eyebrow">ACADEMIC DIRECTION</div>
+                <h3 style="font-size:14px;margin:10px 0">สาขาที่ควรลองศึกษา</h3>
+                <div id="faculties" class="muted" style="font-size:11px;line-height:2.1"></div>
+              </div>
+            </div>
+            <div class="panel" style="grid-column:1/-1">
+              <div class="eyebrow">VERIFY YOUR RESULT</div>
+              <h3 style="margin:10px 0 5px">ตรวจสอบที่มาของคะแนน</h3>
+              <p class="note" id="vNote"></p>
+              <div class="vwrap"><table class="vt" id="vAnswers"></table></div>
+              <div class="vwrap" style="margin-top:18px"><table class="vt" id="vTotals"></table></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="view" id="skill">
+        <div class="wrap">
+          <div class="pagehead">
+            <div class="eyebrow">✦ PERSONAL LEARNING PATH</div>
+            <h1>Skill <span class="gradient">Roadmap.</span></h1>
+            <p>เปลี่ยนเป้าหมายให้เป็นขั้นตอนการเรียนรู้ ติ๊กเช็กเมื่อทำสำเร็จเพื่อบันทึกความคืบหน้าของคุณ</p>
+          </div>
+          <div class="tabs" id="roadTabs"></div>
+          <div class="roadlayout">
+            <div class="panel">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+                <div>
+                  <div class="eyebrow">YOUR LEARNING CHECKLIST</div>
+                  <h2 style="font:700 21px 'Space Grotesk';margin:9px 0" id="roadTitle">Frontend Developer Path</h2>
+                </div>
+                <span class="pill">6 STEPS</span>
+              </div>
+              <div class="progressline"><span id="roadFill" style="width:0%"></span></div>
+              <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted)">
+                <span id="roadCount">0 / 6 completed</span>
+                <span id="roadPercent">0%</span>
+              </div>
+              <div class="roadlist" id="roadList" style="margin-top:20px"></div>
+            </div>
+            <div>
+              <div class="panel">
+                <div class="eyebrow">CAREER STAIRCASE</div>
+                <h3 style="font:700 20px 'Space Grotesk';margin:10px 0 5px" id="stairCareer">Frontend Engineer</h3>
+                <p class="muted" style="font-size:11px">เส้นทางการเติบโตทีละระดับ</p>
+                <div class="stepstair" id="staircase"></div>
+              </div>
+              <div class="panel" style="margin-top:15px">
+                <div class="eyebrow">NOTE</div>
+                <p style="font-size:12px;line-height:1.8;margin-bottom:0">ไม่จำเป็นต้องรีบเก่งทุกอย่างในวันเดียว ขอแค่เรียนรู้และลงมือทำอย่างสม่ำเสมอ ทุกก้าวเล็ก ๆ จะพาคุณเข้าใกล้เป้าหมาย</p>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:70px">
+            <button class="btn secondary" onclick="go('match')">← กลับไปดูผลการจับคู่</button>
+            <button class="btn secondary" onclick="resetRoad()">รีเซ็ตความคืบหน้าสายนี้</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrap" style="display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap">
+        <b style="font:700 17px 'Space Grotesk';color:var(--text)">⌘ your'IT</b>
+        <span>Career Pathway Engine • Discover your potential.</span>
+        <span>© 2026 your'IT</span>
+      </div>
+    </footer>
+    <div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+      <div class="modalbox" id="modalBox"></div>
+    </div>
+    <div class="analyzing" id="analyzing">
+      <div class="spin"></div>
+      <b id="anText"></b>
+    </div>
+    <div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
