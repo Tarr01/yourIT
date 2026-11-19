@@ -86,16 +86,26 @@ a {
 .brand {
   display: flex;
   align-items: center;
-  gap: 11px;
-  font: 700 24px 'Space Grotesk';
-  letter-spacing: -1px;
+  gap: 13px;
+  font: 700 40px 'Space Grotesk';
   color: #e8fcff;
 }
 
+.brand-name,
+.black-ops-one-regular {
+  font-family: "Black Ops One", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
+  font-size: 1.18em;
+  line-height: 1;
+  text-shadow: 0 0 18px #00e7f52b;
+}
+
 .brandmark {
-  width: 37px;
-  height: 37px;
-  border-radius: 12px;
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
   background: linear-gradient(135deg, var(--cyan), var(--blue));
   display: grid;
   place-items: center;
@@ -1021,7 +1031,20 @@ a {
   border-top: 1px solid #ffffff12;
   padding: 28px 0;
   color: var(--muted);
-  font-size: 11px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 20px;
+}
+
+.footer-brandmark {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  font-size: 18px;
 }
 
 /* ============================================================
@@ -1092,11 +1115,12 @@ a {
     height: 66px;
   }
   .brand {
-    font-size: 21px;
+    gap: 10px;
+    font-size: 24px;
   }
   .brandmark {
-    width: 33px;
-    height: 33px;
+    width: 37px;
+    height: 37px;
   }
   .nav {
     display: none;
