@@ -35,7 +35,7 @@ body {
 }
 
 body:before {
-  content: "";  
+  content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
@@ -276,7 +276,20 @@ a {
   flex-wrap: wrap;
   margin-top: 27px;
   color: var(--muted);
-  font-size: 11px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 20px;
+}
+
+.footer-brandmark {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  font-size: 18px;
 }
 
 .meta span:before {
@@ -773,7 +786,7 @@ a {
 
 .qsteps {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   gap: 7px;
 }
 
@@ -1031,20 +1044,7 @@ a {
   border-top: 1px solid #ffffff12;
   padding: 28px 0;
   color: var(--muted);
-}
-
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  font-size: 20px;
-}
-
-.footer-brandmark {
-  width: 34px;
-  height: 34px;
-  border-radius: 9px;
-  font-size: 18px;
+  font-size: 11px;
 }
 
 /* ============================================================
@@ -1795,4 +1795,19 @@ a {
   opacity: .9;
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 25%, transparent 90%);
   mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 25%, transparent 90%);
+}
+
+/* ============================================================
+   Layout for 10 careers / 5 options + "unsure"
+   ============================================================ */
+
+.answer:nth-child(5) {
+  grid-column: 1/-1;
+  min-height: 0;
+}
+
+@media (min-width: 851px) {
+  .careergrid>.card:last-child:nth-child(3n+1) {
+    grid-column: 1/-1;
+  }
 }
